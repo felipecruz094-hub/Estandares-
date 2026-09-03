@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CAMBIOS STANDARD WORK</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="app">
+
+    <aside class="sidebar">
+      
+        <div class="brand">
+            <img
+                src="image 2.png"
+                alt="Vitro Vidrio Automotriz - Creando un Futuro Brillante"
+                class="brand-logo"
+            >
+
+            <div class="brand-text">
+                <h2>Vitro Colombia</h2>
+                <span>Estándares</span>
+            </div>
+        </div>
+
+        <nav>
+            <button class="nav-item active" onclick="mostrarSeccion('inicio', this)">
+                <span>▦</span>
+                Dashboard
+            </button>
+
+            <button class="nav-item" onclick="mostrarSeccion('registro', this)">
+                <span>＋</span>
+                Nueva reunión
+            </button>
+
+            <button class="nav-item" onclick="mostrarSeccion('historial', this)">
+                <span>☷</span>
+                Historial
+            </button>
+        </nav>
+
+        <div class="sidebar-footer">
+            <span>Gestión de cambios</span>
+            <small>Versión 1.0</small>
+        </div>
+
+    </aside>
+
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <div>
+                <p class="eyebrow">GESTIÓN DOCUMENTAL</p>
+                <h1 id="pageTitle">STANDARD WORK</h1>
+            </div>
+
+            <button class="primary-btn" onclick="irARegistro()">
+                ＋ Nueva reunión
+            </button>
+
+        </header>
+
+
+        <section id="inicio" class="section active-section">
+
+            <div class="welcome">
+                <div>
+                    <p class="eyebrow">CONTROL Y SEGUIMIENTO</p>
+
+                    <h2>
+                        Gestión de cambios de estándares
+                    </h2>
+
+                    <p>
+                        Registro de reuniones, participantes,
+                        modificaciones de instrucciones de trabajo
+                        y evidencias fotográficas.
+                    </p>
+                </div>
+
+                <div class="welcome-icon">
+                    ⚙
+                </div>
+            </div>
+
+
+            <div class="kpi-grid">
+
+                <div class="kpi-card">
+                    <div class="kpi-icon">▦</div>
+
+                    <div>
+                        <span>Total reuniones</span>
+                        <strong id="totalReuniones">0</strong>
+                    </div>
+                </div>
+
+
+                <div class="kpi-card">
+                    <div class="kpi-icon blue">↻</div>
+
+                    <div>
+                        <span>IT modificadas</span>
+                        <strong id="totalIT">0</strong>
+                    </div>
+                </div>
+
+
+                <div class="kpi-card">
+                    <div class="kpi-icon orange">◷</div>
+
+                    <div>
+                        <span>Acciones pendientes</span>
+                        <strong id="totalPendientes">0</strong>
+                    </div>
+                </div>
+
+
+                <div class="kpi-card">
+                    <div class="kpi-icon purple">👥</div>
+
+                    <div>
+                        <span>Participantes</span>
+                        <strong id="totalParticipantes">0</strong>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-grid">
+
+                <div class="panel large-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h3>Reuniones registradas</h3>
+                            <span>Evolución por mes</span>
+                        </div>
+
+                    </div>
+
+                    <div id="graficoMeses" class="bar-chart"></div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h3>Tipos de cambio</h3>
+                            <span>Distribución</span>
+                        </div>
+                    </div>
+
+                    <div id="tipoCambios"></div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <h3>Estado de acciones</h3>
+                            <span>Seguimiento</span>
+                        </div>
+                    </div>
+
+                    <div id="estadosAcciones"></div>
+
+                </div>
+
+
+                <div class="panel large-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <h3>Últimas reuniones</h3>
+                            <span>Registros recientes</span>
+                        </div>
+
+                        <button class="text-btn" onclick="mostrarSeccion('historial')">
+                            Ver todas →
+                        </button>
+
+                    </div>
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Grupo</th>
+                                    <th>Código IT</th>
+                                    <th>Cambio</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="ultimasReuniones"></tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section id="registro" class="section">
+
+            <div class="form-container">
+
+                <div class="form-intro">
+
+                    <p class="eyebrow">NUEVO REGISTRO</p>
+
+                    <h2>Registro de reunión</h2>
+
+                    <p>
+                        Registra la información relacionada con
+                        la modificación de un estándar o instrucción
+                        de trabajo.
+                    </p>
+
+                </div>
+
+
+                <form id="reunionForm">
+
+                    <div class="form-card">
+
+                        <div class="form-card-title">
+                            <span>01</span>
+
+                            <div>
+                                <h3>Información de la reunión</h3>
+                                <p>Datos generales del encuentro</p>
+                            </div>
+                        </div>
+
+
+                        <div class="form-grid">
+
+                            <div class="field">
+                                <label>Fecha *</label>
+                                <input type="date" id="fecha" required>
+                            </div>
+
+
+                            <div class="field">
+                                <label>Hora *</label>
+                                <input type="time" id="hora" required>
+                            </div>
+
+
+                            <div class="field">
+                                <label>Grupo / Área *</label>
+
+                                <select id="grupo" required>
+
+                                    <option value="">
+                                        Seleccionar...
+                                    </option>
+
+                                    <option>Producción</option>
+                                    <option>Calidad</option>
+                                    <option>Mantenimiento</option>
+                                    <option>Recursos Humanos</option>
+                                    <option>Ingeniería</option>
+                                    <option>Seguridad</option>
+                                    <option>Logística</option>
+                                    <option>Administración</option>
+
+                                </select>
+                            </div>
+
+
+                            <div class="field">
+                                <label>Proceso *</label>
+
+                                <input
+                                    type="text"
+                                    id="proceso"
+                                    placeholder="Ej. Templado"
+                                    required
+                                >
+                            </div>
+
+
+                            <div class="field">
+                                <label>Lugar</label>
+
+                                <input
+                                    type="text"
+                                    id="lugar"
+                                    placeholder="Ej. Sala de reuniones"
+                                >
+                            </div>
+
+
+                            <div class="field">
+                                <label>Responsable</label>
+
+                                <input
+                                    type="text"
+                                    id="responsable"
+                                    placeholder="Nombre del responsable"
+                                >
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-card">
+
+                        <div class="form-card-title">
+
+                            <span>02</span>
+
+                            <div>
+                                <h3>Participantes</h3>
+                                <p>Personas que participaron en la reunión</p>
+                            </div>
+
+                        </div>
+
+
+                        <div id="participantesContainer">
+
+                            <div class="participant-row">
+
+                                <input
+                                    type="text"
+                                    placeholder="Nombre completo"
+                                    class="participant-name"
+                                >
+
+                                <input
+                                    type="text"
+                                    placeholder="Cargo / Rol"
+                                    class="participant-role"
+                                >
+
+                                <input
+                                    type="text"
+                                    placeholder="Área"
+                                    class="participant-area"
+                                >
+
+                                <button
+                                    type="button"
+                                    class="remove-btn"
+                                    onclick="eliminarParticipante(this)"
+                                >
+                                    ×
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="secondary-btn"
+                            onclick="agregarParticipante()"
+                        >
+                            ＋ Agregar participante
+                        </button>
+
+                    </div>
+
+
+                    <div class="form-card">
+
+                        <div class="form-card-title">
+
+                            <span>03</span>
+
+                            <div>
+                                <h3>Instrucción de trabajo</h3>
+                                <p>Documento que será modificado</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+                            <div class="field">
+
+                                <label>Código IT *</label>
+
+                                <input
+                                    type="text"
+                                    id="codigoIT"
+                                    placeholder="Ej. IT-HTF-001"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label>Nombre de la instrucción *</label>
+
+                                <input
+                                    type="text"
+                                    id="nombreIT"
+                                    placeholder="Nombre de la instrucción"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label>Versión anterior</label>
+
+                                <input
+                                    type="text"
+                                    id="versionAnterior"
+                                    placeholder="Ej. V03"
+                                >
+
+                            </div>
+
+
+                            <div class="field">
+
+                                <label>Nueva versión</label>
+
+                                <input
+                                    type="text"
+                                    id="versionNueva"
+                                    placeholder="Ej. V04"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-card">
+
+                        <div class="form-card-title">
+
+                            <span>04</span>
+
+                            <div>
+                                <h3>Clasificación del cambio</h3>
+                                <p>Identifica el motivo o categoría</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="change-options">
+
+                            <label class="change-option">
+                                <input type="radio" name="tipoCambio" value="Mano de obra">
+                                <span>👤</span>
+                                <strong>Mano de obra</strong>
+                            </label>
+
+
+                            <label class="change-option">
+                                <input type="radio" name="tipoCambio" value="Máquina">
+                                <span>⚙</span>
+                                <strong>Máquina</strong>
+                            </label>
+
+
+                            <label class="change-option">
+                                <input type="radio" name="tipoCambio" value="Método">
+                                <span>📋</span>
+                                <strong>Método</strong>
+                            </label>
+
+
+                            <label class="change-option">
+                                <input type="radio" name="tipoCambio" value="Material">
+                                <span>📦</span>
+                                <strong>Material</strong>
+                            </label>
+
+
+                            <label class="change-option">
+                                <input type="radio" name="tipoCambio" value="Seguridad">
+                                <span>🛡</span>
+                                <strong>Seguridad</strong>
+                            </label>
+
+
+                            <label class="change-option">
+                                <input type="radio" name="tipoCambio" value="Calidad">
+                                <span>✓</span>
+                                <strong>Calidad</strong>
+                            </label>
+
+
+                            <label class="change-option">
+                                <input type="radio" name="tipoCambio" value="Productividad">
+                                <span>📈</span>
+                                <strong>Productividad</strong>
+                            </label>
+
+
+                            <label class="change-option">
+                                <input type="radio" name="tipoCambio" value="Otro">
+                                <span>＋</span>
+                                <strong>Otro</strong>
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-card">
+
+                        <div class="form-card-title">
+
+                            <span>05</span>
+
+                            <div>
+                                <h3>Descripción del cambio</h3>
+                                <p>Detalle de la modificación realizada</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label>¿Qué cambio se realizó? *</label>
+
+                            <textarea
+                                id="descripcionCambio"
+                                rows="5"
+                                placeholder="Describe detalladamente qué se modificó..."
+                                required
+                            ></textarea>
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label>Motivo del cambio</label>
+
+                            <textarea
+                                id="motivoCambio"
+                                rows="4"
+                                placeholder="¿Por qué fue necesario realizar este cambio?"
+                            ></textarea>
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label>Acuerdos de la reunión</label>
+
+                            <textarea
+                                id="acuerdos"
+                                rows="4"
+                                placeholder="Registra los principales acuerdos..."
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-card">
+
+                        <div class="form-card-title">
+
+                            <span>06</span>
+
+                            <div>
+                                <h3>Acciones de seguimiento</h3>
+                                <p>Compromisos derivados de la reunión</p>
+                            </div>
+
+                        </div>
+
+
+                        <div id="accionesContainer">
+
+                            <div class="action-row">
+
+                                <input
+                                    type="text"
+                                    placeholder="Acción / compromiso"
+                                    class="action-description"
+                                >
+
+                                <input
+                                    type="text"
+                                    placeholder="Responsable"
+                                    class="action-responsible"
+                                >
+
+                                <input
+                                    type="date"
+                                    class="action-date"
+                                >
+
+                                <select class="action-status">
+                                    <option>Pendiente</option>
+                                    <option>En proceso</option>
+                                    <option>Cerrada</option>
+                                </select>
+
+                                <button
+                                    type="button"
+                                    class="remove-btn"
+                                    onclick="eliminarAccion(this)"
+                                >
+                                    ×
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="secondary-btn"
+                            onclick="agregarAccion()"
+                        >
+                            ＋ Agregar acción
+                        </button>
+
+                    </div>
+
+
+                    <div class="form-card">
+
+                        <div class="form-card-title">
+
+                            <span>07</span>
+
+                            <div>
+                                <h3>Evidencia fotográfica</h3>
+                                <p>Adjunta fotografías de la reunión o del cambio</p>
+                            </div>
+
+                        </div>
+
+
+                        <label class="upload-area">
+
+                            <input
+                                type="file"
+                                id="fotos"
+                                accept="image/*"
+                                multiple
+                                onchange="mostrarFotos(event)"
+                            >
+
+                            <div class="upload-icon">
+                                📷
+                            </div>
+
+                            <h3>Subir fotografías</h3>
+
+                            <p>
+                                Haz clic aquí o arrastra las imágenes
+                            </p>
+
+                            <span>
+                                PNG, JPG o JPEG
+                            </span>
+
+                        </label>
+
+
+                        <div id="previewFotos" class="photo-grid"></div>
+
+                    </div>
+
+
+                    <div class="form-card final-card">
+
+                        <div>
+
+                            <h3>Confirmar registro</h3>
+
+                            <p>
+                                Verifica que la información esté correcta
+                                antes de guardar la reunión.
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-actions">
+
+                            <button
+                                type="button"
+                                class="secondary-btn"
+                                onclick="limpiarFormulario()"
+                            >
+                                Limpiar
+                            </button>
+
+
+                            <button
+                                type="submit"
+                                class="primary-btn"
+                            >
+                                ✓ Guardar reunión
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <section id="historial" class="section">
+
+            <div class="history-header">
+
+                <div>
+
+                    <p class="eyebrow">
+                        CONSULTA
+                    </p>
+
+                    <h2>
+                        Historial de reuniones
+                    </h2>
+
+                </div>
+
+
+                <input
+                    type="search"
+                    id="busqueda"
+                    placeholder="🔎 Buscar código IT, grupo o participante..."
+                    oninput="renderHistorial()"
+                >
+
+            </div>
+
+
+            <div class="panel">
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Grupo</th>
+                                <th>Código IT</th>
+                                <th>Instrucción</th>
+                                <th>Tipo</th>
+                                <th>Participantes</th>
+                                <th>Fotos</th>
+                                <th>Acciones</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="historialTabla"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<div id="modal" class="modal">
+
+    <div class="modal-content">
+
+        <button
+            class="modal-close"
+            onclick="cerrarModal()"
+        >
+            ×
+        </button>
+
+        <div id="modalBody"></div>
+
+    </div>
+
+</div>
+
+
+<div id="toast" class="toast">
+    Registro guardado correctamente
+</div>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>
